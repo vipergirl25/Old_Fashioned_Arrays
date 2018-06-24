@@ -11,13 +11,11 @@ public class Sorting {
 		int swapcounter = 0;
 		while(test == true) {
 			swapcounter=0;
-			System.out.println(swapcounter);
 			for (int i = 0; i < testArray.length-1; i++) {
 				swap = false;
 				word1 = testArray[i];
 				word2 = testArray[i+1];
 				compare = word1.compareTo(word2);
-				System.out.println(compare);
 				if(compare <= -1) {
 					
 				}else if(compare == 0) {
@@ -26,7 +24,6 @@ public class Sorting {
 					testArray[i]=word2;
 					testArray[i+1]=word1;
 					swapcounter++;
-					System.out.println(swapcounter);
 				}
 			}
 			if(swapcounter==0) {
