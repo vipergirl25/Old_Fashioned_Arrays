@@ -5,8 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class ArrayList implements List{
-
+public class ArrayList<E> implements List<E>{
+	Object[] array = new Object[10];
+	int size;
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
@@ -21,8 +22,14 @@ public class ArrayList implements List{
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean hi = false;
+		for (int i = 0; i < array.length; i++) {
+			if(array[i]==o) {
+				hi = true;
+				break;
+			}
+		}
+		return hi;
 	}
 
 	@Override
@@ -45,8 +52,9 @@ public class ArrayList implements List{
 
 	@Override
 	public boolean add(Object e) {
-		// TODO Auto-generated method stub
-		return false;
+		size++;
+		array[size-1] = e;
+		return true;
 	}
 
 	@Override
@@ -92,27 +100,36 @@ public class ArrayList implements List{
 	}
 
 	@Override
-	public Object get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	public E get(int index) {
+		Object o;
+		o = array[index];
+		return (E)o;
 	}
 
 	@Override
-	public Object set(int index, Object element) {
-		// TODO Auto-generated method stub
-		return null;
+	public E set(int index, Object element) {
+		array[index] = element;
+		return (E)element;
+	}
+
+
+	public void addAt(int index, Object element) {
+		System.out.println("size = " + size);
+		for (int i = size-1; i > index-1; i--) {
+			System.out.println(i);
+			array[i+1]=array[i];
+			
+		}
+		array[index]=element;
+		size++;
 	}
 
 	@Override
-	public void add(int index, Object element) {
-		ArrayList
-		
-	}
-
-	@Override
-	public Object remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	public E remove(int index) {
+		for (int i = index; i < array.length; i++) {
+			array[index] = array[index+1];
+		}
+		return (E)array[index];
 	}
 
 	@Override
@@ -143,5 +160,11 @@ public class ArrayList implements List{
 	public List subList(int fromIndex, int toIndex) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void add(int index, Object element) {
+		// TODO Auto-generated method stub
+		
 	}
 }
