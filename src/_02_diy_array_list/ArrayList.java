@@ -59,8 +59,24 @@ public class ArrayList<E> implements List<E>{
 
 	@Override
 	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		int index = 0;
+		boolean thing = false;
+		for (int i = 0; i < array.length; i++) {
+			if(array[i].equals(o)) {
+				System.out.println("i = " + i);
+				index = i;
+				thing = true;
+				break;
+			}
+		}
+		if(thing==false) {
+			return false;
+		}else {
+			for (int i = index; i < array.length; i++) {
+				array[i] = array[i+1];
+			}
+			return true;
+		}
 	}
 
 	@Override
@@ -126,8 +142,8 @@ public class ArrayList<E> implements List<E>{
 
 	@Override
 	public E remove(int index) {
-		for (int i = index; i < array.length; i++) {
-			array[index] = array[index+1];
+		for (int i = index; i < array.length-1; i++) {
+			array[i] = array[i+1];
 		}
 		return (E)array[index];
 	}
